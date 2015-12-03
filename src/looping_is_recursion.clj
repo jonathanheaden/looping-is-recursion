@@ -14,7 +14,12 @@
     ))
 
 (defn seq= [seq1 seq2]
-  ":(")
+  (cond
+    (and (empty? seq1) (empty? seq2)) true
+    (or (empty? seq1) (empty? seq2)) false
+    (= (first seq1) (first seq2)) (seq= (rest seq1) (rest seq2))
+    :else false
+    ))
 
 (defn find-first-index [pred a-seq]
   ":(")
