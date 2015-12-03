@@ -49,7 +49,16 @@
       )))
   
 (defn fast-fibo [n]
-  ":(")
+  (loop [fibn1 1
+         fibn 1
+         ind 0]
+    (cond
+      (= n 0) 0
+      (<= n 2) 1
+      (= ind n) (+ fibn1 fibn)
+      :else (recur (+ fibn1 fibn) fibn1 (inc ind))
+      )))
+      
 
 (defn cut-at-repetition [a-seq]
   [":("])
