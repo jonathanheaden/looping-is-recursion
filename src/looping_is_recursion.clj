@@ -40,8 +40,14 @@
     )))
 
 (defn parity [a-seq]
-  ":(")
-
+  (loop [acc #{}
+         seq1 a-seq]
+    (cond
+      (empty? seq1) acc
+      (contains? acc (first seq1)) (recur (disj acc (first seq1)) (rest seq1))
+      :else (recur (conj acc (first seq1)) (rest seq1))
+      )))
+  
 (defn fast-fibo [n]
   ":(")
 
