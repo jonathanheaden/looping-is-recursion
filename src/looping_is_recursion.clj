@@ -61,5 +61,12 @@
       
 
 (defn cut-at-repetition [a-seq]
-  [":("])
+   (reverse (loop [priors #{}
+         seq1 a-seq
+         acc nil]
+              (cond
+                (empty? seq1) acc
+                (contains? priors (first seq1)) acc
+                :else (recur (conj priors (first seq1)) (rest seq1) (cons (first seq1) acc))
+      ))))
 
