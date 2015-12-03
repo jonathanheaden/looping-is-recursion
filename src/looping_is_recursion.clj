@@ -31,7 +31,13 @@
       )))
 
 (defn avg [a-seq]
-  -1)
+  (loop [acc 0
+         cnt 1
+         seq1 a-seq]
+    (if (empty? seq1)
+      (/ acc (dec cnt))
+      (recur (+ acc (first seq1)) (inc cnt) (rest seq1))
+    )))
 
 (defn parity [a-seq]
   ":(")
